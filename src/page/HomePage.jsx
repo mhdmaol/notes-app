@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar';
 import useInput from '../hooks/useInput';
 import CreateButton from '../components/CreateButton';
 
-function HomePage({ isArchivePage, userId }) {
+function HomePage({ isArchivePage }) {
   const [notes, setNotes] = useState([]);
   const [value, setValue] = useInput();
 
@@ -28,7 +28,7 @@ function HomePage({ isArchivePage, userId }) {
     notesList();
   }, [isArchivePage]);
 
-  const filteredNotes = notes.filter((item) => item.title.toLowerCase().includes(value.toLowerCase() && userId.toLowerCase()));
+  const filteredNotes = notes.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()) || item.body.toLowerCase().includes(value.toLowerCase()));
 
   return (
     <>
